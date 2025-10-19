@@ -1,0 +1,239 @@
+{
+  "brand_info": {
+    "name": "Breuit",
+    "tagline": "Where Coffee Meets Fruit",
+    "concept": "Brewing + Fruit - fusion of coffee energy and natural fruit freshness",
+    "mission": "Reinventing cold coffee through fruit-based fusion \u2014 natural, refreshing, and crafted for the modern active lifestyle",
+    "target_audience": [
+      "Urban millennials",
+      "Gen Z professionals",
+      "Wellness-focused consumers",
+      "Coffee enthusiasts",
+      "Creatives seeking refreshing caffeine alternatives"
+    ]
+  },
+  "products": [
+    {
+      "id": 1,
+      "name": "Orange \u00d7 Coffee",
+      "tagline": "Citrus Sunshine Blended with Premium Coffee",
+      "description": "Citrus sunshine blended with premium coffee for your mornings. Wake up to the bright, zesty burst of orange paired with bold coffee notes.",
+      "flavor_profile": "Bright, citrusy, energizing",
+      "best_for": "Morning boost, post-workout refreshment",
+      "ingredients": [
+        "Premium cold brew coffee",
+        "Fresh orange juice",
+        "Natural citrus extract",
+        "Filtered water"
+      ],
+      "caffeine_level": "Medium (95mg)",
+      "calories": "45 per can",
+      "sugar": "8g (from natural fruit)",
+      "color_theme": "#FF8C42"
+    },
+    {
+      "id": 2,
+      "name": "Strawberry \u00d7 Coffee",
+      "tagline": "Sweet Meets Bold",
+      "description": "Strawberry spark with rich coffee tones. Experience the perfect harmony of sweet berry essence and deep coffee richness.",
+      "flavor_profile": "Sweet, fruity, balanced",
+      "best_for": "Afternoon pick-me-up, creative sessions",
+      "ingredients": [
+        "Premium cold brew coffee",
+        "Strawberry puree",
+        "Natural berry extract",
+        "Filtered water"
+      ],
+      "caffeine_level": "Medium (90mg)",
+      "calories": "50 per can",
+      "sugar": "10g (from natural fruit)",
+      "color_theme": "#FF6B9D"
+    },
+    {
+      "id": 3,
+      "name": "Mixed Berries \u00d7 Coffee",
+      "tagline": "A Fruity Symphony",
+      "description": "Bursting with antioxidants and caffeine. A complex blend of blueberries, raspberries, and blackberries meets premium coffee.",
+      "flavor_profile": "Rich, complex, antioxidant-rich",
+      "best_for": "Wellness focus, all-day energy",
+      "ingredients": [
+        "Premium cold brew coffee",
+        "Mixed berry blend",
+        "Natural antioxidants",
+        "Filtered water"
+      ],
+      "caffeine_level": "High (110mg)",
+      "calories": "48 per can",
+      "sugar": "9g (from natural fruit)",
+      "color_theme": "#8B4789"
+    },
+    {
+      "id": 4,
+      "name": "Coconut Water \u00d7 Coffee",
+      "tagline": "Hydration Meets Energy",
+      "description": "Smooth tropical coffee fusion. Natural coconut water provides electrolytes while coffee delivers sustained energy.",
+      "flavor_profile": "Smooth, tropical, hydrating",
+      "best_for": "Beach days, gym recovery, hot weather",
+      "ingredients": [
+        "Premium cold brew coffee",
+        "Natural coconut water",
+        "Tropical essence",
+        "Filtered water"
+      ],
+      "caffeine_level": "Light (75mg)",
+      "calories": "40 per can",
+      "sugar": "6g (from coconut water)",
+      "color_theme": "#4ECDC4"
+    }
+  ],
+  "website_sections": {
+    "homepage": {
+      "hero_headline": "Brewed Bold. Bursting with Fruit.",
+      "hero_subheadline": "Where Coffee Meets Fruit",
+      "ctas": [
+        "Explore Flavors",
+        "Pre-Order Now",
+        "Shop Breuit"
+      ],
+      "hero_video": "Coffee pouring over fresh fruit slices with ice",
+      "animation_elements": [
+        "Fruit icons appearing on scroll",
+        "Can rotation on hover",
+        "Condensation effect"
+      ]
+    },
+    "about": {
+      "headline": "Crafted at the Intersection of Coffee and Nature",
+      "story_sections": [
+        "Our mission to combine coffee craftsmanship and fruit vitality",
+        "Sustainability focus: 100% recyclable PET cans",
+        "Ethically sourced coffee beans",
+        "No artificial additives commitment"
+      ]
+    },
+    "shop": {
+      "features": [
+        "Pre-orders and subscriptions",
+        "Monthly supply at 10% off",
+        "Store locator for retail partners",
+        "Flavor comparison tool",
+        "Caffeine level filters"
+      ]
+    },
+    "sustainability": {
+      "initiatives": [
+        "100% recyclable PET packaging",
+        "Circular economy model",
+        "Ethical sourcing partnerships",
+        "Carbon-neutral delivery options"
+      ],
+      "cta": "Join Our Eco Crew"
+    }
+  },
+  "design_system": {
+    "color_palette": {
+      "primary": "#3E2723",
+      "secondary": "#FF8C42",
+      "accent_berry": "#FF6B9D",
+      "accent_tropical": "#4ECDC4",
+      "accent_purple": "#8B4789",
+      "neutral_light": "#F5F5F5",
+      "neutral_dark": "#212121"
+    },
+    "typography": {
+      "headings": "Poppins Bold / Montserrat Bold",
+      "body": "Lato / Open Sans",
+      "kerning": "Playful spacing for titles"
+    },
+    "visual_elements": [
+      "Macro fruit imagery + coffee beans close-ups",
+      "Condensation effects on cans",
+      "Video loops of coffee pouring into fruit-infused glasses",
+      "Parallax scroll animations",
+      "Floating fruit icons"
+    ]
+  },
+  "technical_requirements": {
+    "performance": {
+      "loading_time": "< 2 seconds",
+      "mobile_first": true,
+      "responsive": true,
+      "pwa_ready": true
+    },
+    "seo": {
+      "primary_keywords": [
+        "fruit coffee drink",
+        "cold brew fruit fusion",
+        "Breuit beverage India",
+        "fruit-based coffee",
+        "healthy coffee alternatives"
+      ],
+      "schema_markup": "JSON-LD for products"
+    },
+    "integrations": {
+      "payment": [
+        "Razorpay",
+        "Stripe"
+      ],
+      "email": [
+        "Mailchimp",
+        "ConvertKit"
+      ],
+      "analytics": [
+        "Google Analytics 4",
+        "Hotjar"
+      ],
+      "social": [
+        "Instagram API",
+        "YouTube embed"
+      ]
+    },
+    "recommended_stack": {
+      "cms": "Webflow / Shopify",
+      "hosting": "Vercel / AWS with CDN",
+      "database": "Firebase / PostgreSQL"
+    }
+  },
+  "user_flows": {
+    "discovery": [
+      "Land on hero banner",
+      "Scroll through animated product showcase",
+      "Click 'Explore Flavors'",
+      "View 360\u00b0 can rotation",
+      "Take flavor quiz"
+    ],
+    "purchase": [
+      "Select product from grid",
+      "View detailed nutritional info",
+      "Choose quantity/subscription",
+      "Add to cart with animation",
+      "Smooth checkout with autofill",
+      "Order confirmation with tracking"
+    ],
+    "engagement": [
+      "Read brand story",
+      "Watch 'How It's Made' video",
+      "Join newsletter for early access",
+      "Follow on Instagram",
+      "Submit feedback via chatbot"
+    ]
+  },
+  "content_sections": {
+    "lifestyle_experience": {
+      "content_types": [
+        "Videos: Enjoying Breuit during workouts, office, beach",
+        "Blog: 'Why Fruit Coffee Is the Next Big Beverage Trend'",
+        "Instagram feed: #BrewYourFruit",
+        "Flavor quiz: 'Find Your Breuit Flavor'"
+      ]
+    },
+    "social_proof": {
+      "elements": [
+        "Customer testimonials with photos",
+        "User-generated content gallery",
+        "Expert endorsements",
+        "Press coverage mentions"
+      ]
+    }
+  }
+}

@@ -1,0 +1,1317 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Breuit - Where Coffee Meets Fruit | Premium Fruit-Coffee Fusion Beverages</title>
+    <meta name="description" content="Breuit reinvents cold coffee through fruit-based fusion. Natural, refreshing, and crafted for the modern active lifestyle. Discover our Orange, Strawberry, Mixed Berries & Coconut Water coffee blends.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Open+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+    
+    <style>
+        /* Design System Variables */
+        :root {
+            --primary-coffee: #3E2723;
+            --orange: #FF8C42;
+            --strawberry: #FF6B9D;
+            --berry: #8B4789;
+            --coconut: #4ECDC4;
+            --white: #FFFFFF;
+            --light-gray: #F5F5F5;
+            --dark-gray: #333333;
+            --medium-gray: #666666;
+            
+            --font-heading: 'Poppins', sans-serif;
+            --font-body: 'Open Sans', sans-serif;
+            
+            --shadow-soft: 0 10px 30px rgba(62, 39, 35, 0.1);
+            --shadow-strong: 0 20px 60px rgba(62, 39, 35, 0.2);
+            --radius: 20px;
+            --radius-large: 30px;
+            
+            --gradient-hero: linear-gradient(135deg, #3E2723 0%, #5D4E37 50%, #8B7355 100%);
+            --gradient-orange: linear-gradient(135deg, #FF8C42 0%, #FF7A28 100%);
+            --gradient-strawberry: linear-gradient(135deg, #FF6B9D 0%, #FF5A8A 100%);
+            --gradient-berry: linear-gradient(135deg, #8B4789 0%, #7A3D76 100%);
+            --gradient-coconut: linear-gradient(135deg, #4ECDC4 0%, #44B3AA 100%);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: var(--font-body);
+            line-height: 1.6;
+            color: var(--dark-gray);
+            overflow-x: hidden;
+        }
+        
+        /* Navigation */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 1rem 2rem;
+            transition: all 0.3s ease;
+            border-bottom: 1px solid rgba(62, 39, 35, 0.1);
+        }
+        
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .logo {
+            font-family: var(--font-heading);
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--primary-coffee);
+            text-decoration: none;
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+            align-items: center;
+        }
+        
+        .nav-links a {
+            text-decoration: none;
+            color: var(--dark-gray);
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+        
+        .nav-links a:hover {
+            color: var(--primary-coffee);
+        }
+        
+        .cart-icon {
+            position: relative;
+            background: var(--primary-coffee);
+            color: white;
+            padding: 0.75rem;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+        
+        .cart-icon:hover {
+            transform: scale(1.1);
+        }
+        
+        .cart-count {
+            position: absolute;
+            top: -5px;
+            right: -5px;
+            background: var(--orange);
+            color: white;
+            border-radius: 50%;
+            width: 20px;
+            height: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.8rem;
+            font-weight: bold;
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: var(--gradient-hero);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0.3;
+            background: url('https://user-gen-media-assets.s3.amazonaws.com/seedream_images/872fe44d-4a47-462b-b5a5-490a356ef2f9.png') center/cover no-repeat;
+        }
+        
+        .hero-content {
+            max-width: 800px;
+            z-index: 2;
+            position: relative;
+            padding: 0 2rem;
+        }
+        
+        .hero h1 {
+            font-family: var(--font-heading);
+            font-size: clamp(3rem, 6vw, 5rem);
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            opacity: 0;
+            animation: fadeInUp 1s ease forwards;
+        }
+        
+        .hero-tagline {
+            font-size: clamp(1.2rem, 3vw, 1.5rem);
+            margin-bottom: 3rem;
+            opacity: 0;
+            animation: fadeInUp 1s ease 0.3s forwards;
+        }
+        
+        .cta-buttons {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            opacity: 0;
+            animation: fadeInUp 1s ease 0.6s forwards;
+        }
+        
+        .btn {
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: var(--radius);
+            font-family: var(--font-heading);
+            font-weight: 600;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+        
+        .btn-primary {
+            background: var(--orange);
+            color: white;
+        }
+        
+        .btn-primary:hover {
+            background: #e67c35;
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-strong);
+        }
+        
+        .btn-secondary {
+            background: transparent;
+            color: white;
+            border: 2px solid white;
+        }
+        
+        .btn-secondary:hover {
+            background: white;
+            color: var(--primary-coffee);
+            transform: translateY(-2px);
+        }
+        
+        .fruit-icons {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+        }
+        
+        .fruit-icon {
+            position: absolute;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            opacity: 0;
+            animation: float 6s ease-in-out infinite;
+        }
+        
+        .fruit-icon.orange {
+            background: var(--gradient-orange);
+            top: 20%;
+            left: 10%;
+            animation-delay: 1s;
+        }
+        
+        .fruit-icon.strawberry {
+            background: var(--gradient-strawberry);
+            top: 30%;
+            right: 15%;
+            animation-delay: 1.5s;
+        }
+        
+        .fruit-icon.berry {
+            background: var(--gradient-berry);
+            bottom: 30%;
+            left: 15%;
+            animation-delay: 2s;
+        }
+        
+        .fruit-icon.coconut {
+            background: var(--gradient-coconut);
+            bottom: 20%;
+            right: 10%;
+            animation-delay: 2.5s;
+        }
+        
+        /* Products Section */
+        .products {
+            padding: 6rem 2rem;
+            background: var(--light-gray);
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .section-title {
+            font-family: var(--font-heading);
+            font-size: clamp(2.5rem, 5vw, 3.5rem);
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 3rem;
+            color: var(--primary-coffee);
+        }
+        
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-bottom: 4rem;
+        }
+        
+        .product-card {
+            background: white;
+            border-radius: var(--radius-large);
+            padding: 2rem;
+            text-align: center;
+            box-shadow: var(--shadow-soft);
+            transition: all 0.3s ease;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .product-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            transition: all 0.3s ease;
+        }
+        
+        .product-card.orange::before {
+            background: var(--gradient-orange);
+        }
+        
+        .product-card.strawberry::before {
+            background: var(--gradient-strawberry);
+        }
+        
+        .product-card.berry::before {
+            background: var(--gradient-berry);
+        }
+        
+        .product-card.coconut::before {
+            background: var(--gradient-coconut);
+        }
+        
+        .product-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-strong);
+        }
+        
+        .product-card:hover::before {
+            height: 100%;
+            opacity: 0.1;
+        }
+        
+        .product-image {
+            width: 120px;
+            height: 200px;
+            margin: 0 auto 1.5rem;
+            border-radius: var(--radius);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            color: white;
+            font-weight: bold;
+        }
+        
+        .product-card.orange .product-image {
+            background: var(--gradient-orange);
+        }
+        
+        .product-card.strawberry .product-image {
+            background: var(--gradient-strawberry);
+        }
+        
+        .product-card.berry .product-image {
+            background: var(--gradient-berry);
+        }
+        
+        .product-card.coconut .product-image {
+            background: var(--gradient-coconut);
+        }
+        
+        .product-name {
+            font-family: var(--font-heading);
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            color: var(--primary-coffee);
+        }
+        
+        .product-tagline {
+            font-size: 1rem;
+            color: var(--medium-gray);
+            margin-bottom: 1rem;
+            font-style: italic;
+        }
+        
+        .product-description {
+            color: var(--medium-gray);
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+        }
+        
+        .product-stats {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+            text-align: left;
+        }
+        
+        .stat {
+            font-size: 0.9rem;
+        }
+        
+        .stat-label {
+            font-weight: 600;
+            color: var(--primary-coffee);
+        }
+        
+        .product-actions {
+            display: flex;
+            gap: 1rem;
+        }
+        
+        .btn-small {
+            padding: 0.75rem 1.5rem;
+            font-size: 0.9rem;
+            flex: 1;
+        }
+        
+        /* Brand Story Section */
+        .brand-story {
+            padding: 6rem 2rem;
+            background: white;
+        }
+        
+        .story-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+        
+        .story-text h2 {
+            font-family: var(--font-heading);
+            font-size: clamp(2rem, 4vw, 3rem);
+            font-weight: 700;
+            color: var(--primary-coffee);
+            margin-bottom: 2rem;
+        }
+        
+        .story-text p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+            color: var(--medium-gray);
+        }
+        
+        .story-image {
+            border-radius: var(--radius-large);
+            overflow: hidden;
+            box-shadow: var(--shadow-soft);
+        }
+        
+        .story-image img {
+            width: 100%;
+            height: 400px;
+            object-fit: cover;
+        }
+        
+        /* Quiz Section */
+        .quiz-section {
+            padding: 6rem 2rem;
+            background: var(--light-gray);
+        }
+        
+        .quiz-container {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        
+        .quiz-card {
+            background: white;
+            border-radius: var(--radius-large);
+            padding: 3rem;
+            box-shadow: var(--shadow-soft);
+        }
+        
+        .quiz-progress {
+            display: flex;
+            justify-content: center;
+            gap: 0.5rem;
+            margin-bottom: 2rem;
+        }
+        
+        .progress-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: #ddd;
+            transition: background 0.3s ease;
+        }
+        
+        .progress-dot.active {
+            background: var(--orange);
+        }
+        
+        .quiz-question h3 {
+            font-family: var(--font-heading);
+            font-size: 1.8rem;
+            font-weight: 600;
+            color: var(--primary-coffee);
+            margin-bottom: 2rem;
+        }
+        
+        .quiz-options {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+        
+        .quiz-option {
+            padding: 1rem;
+            border: 2px solid #ddd;
+            border-radius: var(--radius);
+            background: white;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 500;
+        }
+        
+        .quiz-option:hover {
+            border-color: var(--orange);
+            transform: translateY(-2px);
+        }
+        
+        .quiz-option.selected {
+            border-color: var(--orange);
+            background: var(--orange);
+            color: white;
+        }
+        
+        .quiz-result {
+            display: none;
+            text-align: center;
+        }
+        
+        .recommended-product {
+            background: var(--light-gray);
+            border-radius: var(--radius);
+            padding: 2rem;
+            margin: 2rem 0;
+        }
+        
+        /* Sustainability Section */
+        .sustainability {
+            padding: 6rem 2rem;
+            background: var(--primary-coffee);
+            color: white;
+        }
+        
+        .sustainability-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+        
+        .sustainability-item {
+            text-align: center;
+        }
+        
+        .sustainability-icon {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 1rem;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+        }
+        
+        .sustainability-item h3 {
+            font-family: var(--font-heading);
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+        }
+        
+        /* Newsletter Section */
+        .newsletter {
+            padding: 4rem 2rem;
+            background: var(--orange);
+            text-align: center;
+            color: white;
+        }
+        
+        .newsletter-form {
+            max-width: 500px;
+            margin: 0 auto;
+            display: flex;
+            gap: 1rem;
+        }
+        
+        .newsletter-input {
+            flex: 1;
+            padding: 1rem;
+            border: none;
+            border-radius: var(--radius);
+            font-size: 1rem;
+        }
+        
+        /* Footer */
+        .footer {
+            background: var(--primary-coffee);
+            color: white;
+            padding: 3rem 2rem 2rem;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+        
+        .footer-section h3 {
+            font-family: var(--font-heading);
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+        
+        .footer-section a {
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            display: block;
+            margin-bottom: 0.5rem;
+            transition: color 0.3s ease;
+        }
+        
+        .footer-section a:hover {
+            color: var(--orange);
+        }
+        
+        .footer-bottom {
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 2rem;
+            text-align: center;
+            color: rgba(255, 255, 255, 0.6);
+        }
+        
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0px) rotate(0deg);
+                opacity: 0;
+            }
+            25% {
+                opacity: 0.8;
+            }
+            50% {
+                transform: translateY(-20px) rotate(180deg);
+                opacity: 1;
+            }
+            75% {
+                opacity: 0.8;
+            }
+        }
+        
+        /* Mobile Responsiveness */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .hero {
+                min-height: 80vh;
+                padding: 0 1rem;
+            }
+            
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .story-content {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+            
+            .products-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .newsletter-form {
+                flex-direction: column;
+            }
+            
+            .fruit-icon {
+                width: 40px;
+                height: 40px;
+            }
+        }
+        
+        /* Shopping Cart Modal */
+        .cart-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 2000;
+        }
+        
+        .cart-content {
+            background: white;
+            border-radius: var(--radius-large);
+            padding: 2rem;
+            max-width: 500px;
+            width: 90%;
+            max-height: 80vh;
+            overflow-y: auto;
+        }
+        
+        .cart-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .hidden {
+            display: none;
+        }
+        
+        .success-message {
+            background: var(--coconut);
+            color: white;
+            padding: 1rem;
+            border-radius: var(--radius);
+            margin: 1rem 0;
+            text-align: center;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="#" class="logo">Breuit</a>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#products">Products</a></li>
+                <li><a href="#story">Our Story</a></li>
+                <li><a href="#sustainability">Sustainability</a></li>
+                <li><a href="#quiz">Flavor Finder</a></li>
+            </ul>
+            <div class="cart-icon" onclick="toggleCart()">
+                🛒
+                <span class="cart-count">0</span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-bg"></div>
+        <div class="fruit-icons">
+            <div class="fruit-icon orange">🍊</div>
+            <div class="fruit-icon strawberry">🍓</div>
+            <div class="fruit-icon berry">🫐</div>
+            <div class="fruit-icon coconut">🥥</div>
+        </div>
+        <div class="hero-content">
+            <h1>Brewed Bold. Bursting with Fruit.</h1>
+            <p class="hero-tagline">Where Coffee Meets Fruit — Natural, refreshing, and crafted for the modern active lifestyle</p>
+            <div class="cta-buttons">
+                <a href="#products" class="btn btn-primary">Explore Flavors</a>
+                <a href="#quiz" class="btn btn-secondary">Find Your Flavor</a>
+                <button class="btn btn-secondary" onclick="showPreOrder()">Pre-Order Now</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Products Section -->
+    <section id="products" class="products">
+        <div class="container">
+            <h2 class="section-title">Our Signature Collection</h2>
+            <div class="products-grid">
+                <div class="product-card orange" data-product="1">
+                    <div class="product-image">☕🍊</div>
+                    <h3 class="product-name">Orange × Coffee</h3>
+                    <p class="product-tagline">Citrus Sunshine Blended with Premium Coffee</p>
+                    <p class="product-description">Wake up to the bright, zesty burst of orange paired with bold coffee notes.</p>
+                    <div class="product-stats">
+                        <div class="stat"><span class="stat-label">Caffeine:</span> Medium (95mg)</div>
+                        <div class="stat"><span class="stat-label">Calories:</span> 45 per can</div>
+                        <div class="stat"><span class="stat-label">Sugar:</span> 8g (natural)</div>
+                        <div class="stat"><span class="stat-label">Price:</span> ₹149</div>
+                    </div>
+                    <div class="product-actions">
+                        <button class="btn btn-primary btn-small" onclick="addToCart(1, 'Orange × Coffee', 149)">Add to Cart</button>
+                        <button class="btn btn-secondary btn-small" onclick="showProductDetails(1)">Learn More</button>
+                    </div>
+                </div>
+
+                <div class="product-card strawberry" data-product="2">
+                    <div class="product-image">☕🍓</div>
+                    <h3 class="product-name">Strawberry × Coffee</h3>
+                    <p class="product-tagline">Sweet Meets Bold</p>
+                    <p class="product-description">Experience the perfect harmony of sweet berry essence and deep coffee richness.</p>
+                    <div class="product-stats">
+                        <div class="stat"><span class="stat-label">Caffeine:</span> Medium (90mg)</div>
+                        <div class="stat"><span class="stat-label">Calories:</span> 50 per can</div>
+                        <div class="stat"><span class="stat-label">Sugar:</span> 10g (natural)</div>
+                        <div class="stat"><span class="stat-label">Price:</span> ₹149</div>
+                    </div>
+                    <div class="product-actions">
+                        <button class="btn btn-primary btn-small" onclick="addToCart(2, 'Strawberry × Coffee', 149)">Add to Cart</button>
+                        <button class="btn btn-secondary btn-small" onclick="showProductDetails(2)">Learn More</button>
+                    </div>
+                </div>
+
+                <div class="product-card berry" data-product="3">
+                    <div class="product-image">☕🫐</div>
+                    <h3 class="product-name">Mixed Berries × Coffee</h3>
+                    <p class="product-tagline">A Fruity Symphony</p>
+                    <p class="product-description">A complex blend of blueberries, raspberries, and blackberries meets premium coffee.</p>
+                    <div class="product-stats">
+                        <div class="stat"><span class="stat-label">Caffeine:</span> High (110mg)</div>
+                        <div class="stat"><span class="stat-label">Calories:</span> 48 per can</div>
+                        <div class="stat"><span class="stat-label">Sugar:</span> 9g (natural)</div>
+                        <div class="stat"><span class="stat-label">Price:</span> ₹159</div>
+                    </div>
+                    <div class="product-actions">
+                        <button class="btn btn-primary btn-small" onclick="addToCart(3, 'Mixed Berries × Coffee', 159)">Add to Cart</button>
+                        <button class="btn btn-secondary btn-small" onclick="showProductDetails(3)">Learn More</button>
+                    </div>
+                </div>
+
+                <div class="product-card coconut" data-product="4">
+                    <div class="product-image">☕🥥</div>
+                    <h3 class="product-name">Coconut Water × Coffee</h3>
+                    <p class="product-tagline">Hydration Meets Energy</p>
+                    <p class="product-description">Natural coconut water provides electrolytes while coffee delivers sustained energy.</p>
+                    <div class="product-stats">
+                        <div class="stat"><span class="stat-label">Caffeine:</span> Light (75mg)</div>
+                        <div class="stat"><span class="stat-label">Calories:</span> 40 per can</div>
+                        <div class="stat"><span class="stat-label">Sugar:</span> 6g (natural)</div>
+                        <div class="stat"><span class="stat-label">Price:</span> ₹139</div>
+                    </div>
+                    <div class="product-actions">
+                        <button class="btn btn-primary btn-small" onclick="addToCart(4, 'Coconut Water × Coffee', 139)">Add to Cart</button>
+                        <button class="btn btn-secondary btn-small" onclick="showProductDetails(4)">Learn More</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Brand Story Section -->
+    <section id="story" class="brand-story">
+        <div class="container">
+            <div class="story-content">
+                <div class="story-text">
+                    <h2>Crafted at the Intersection of Coffee &amp; Nature</h2>
+                    <p>At Breuit, we believe that the perfect beverage exists where bold coffee meets vibrant fruit. Our journey began with a simple question: What if we could capture the energy of premium coffee and the refreshing essence of natural fruit in a single, extraordinary drink?</p>
+                    <p>Every can of Breuit represents our commitment to quality, sustainability, and innovation. We source our coffee beans from ethical farms and blend them with the finest natural fruit extracts, creating a fusion that energizes your body and delights your senses.</p>
+                    <p><strong>Our Promise:</strong> 100% natural ingredients, no artificial additives, and a commitment to environmental responsibility that makes every sip meaningful.</p>
+                    <a href="#sustainability" class="btn btn-primary">Learn About Our Impact</a>
+                </div>
+                <div class="story-image">
+                    <img src="https://user-gen-media-assets.s3.amazonaws.com/seedream_images/6f13a5f0-cb52-4bc9-b4ed-b7eedb85ac1f.png" alt="Breuit Product Range" />
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Flavor Finder Quiz -->
+    <section id="quiz" class="quiz-section">
+        <div class="container">
+            <h2 class="section-title">Find Your Perfect Breuit</h2>
+            <div class="quiz-container">
+                <div class="quiz-card">
+                    <div class="quiz-progress">
+                        <div class="progress-dot active"></div>
+                        <div class="progress-dot"></div>
+                        <div class="progress-dot"></div>
+                    </div>
+                    
+                    <div id="quiz-start" class="quiz-start">
+                        <h3>Discover which Breuit flavor matches your lifestyle!</h3>
+                        <p>Take our quick 3-question quiz to find your perfect fruit-coffee fusion.</p>
+                        <button class="btn btn-primary" onclick="startQuiz()">Start Quiz</button>
+                    </div>
+
+                    <div id="quiz-questions" class="quiz-questions hidden">
+                        <!-- Questions will be populated by JavaScript -->
+                    </div>
+
+                    <div id="quiz-result" class="quiz-result hidden">
+                        <h3>Your Perfect Match!</h3>
+                        <div class="recommended-product">
+                            <!-- Result will be populated by JavaScript -->
+                        </div>
+                        <button class="btn btn-primary" onclick="addRecommendedToCart()">Add to Cart</button>
+                        <button class="btn btn-secondary" onclick="restartQuiz()">Take Quiz Again</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sustainability Section -->
+    <section id="sustainability" class="sustainability">
+        <div class="container">
+            <h2 class="section-title">Brewing a Better Future</h2>
+            <div class="sustainability-content">
+                <div class="sustainability-item">
+                    <div class="sustainability-icon">♻️</div>
+                    <h3>100% Recyclable Packaging</h3>
+                    <p>Our PET cans are fully recyclable, supporting a circular economy model that reduces environmental impact.</p>
+                </div>
+                <div class="sustainability-item">
+                    <div class="sustainability-icon">🌱</div>
+                    <h3>Ethical Sourcing</h3>
+                    <p>We partner with certified sustainable farms that prioritize fair trade and environmental stewardship.</p>
+                </div>
+                <div class="sustainability-item">
+                    <div class="sustainability-icon">🚚</div>
+                    <h3>Carbon-Neutral Delivery</h3>
+                    <p>Our delivery partners use eco-friendly transportation methods to minimize our carbon footprint.</p>
+                </div>
+                <div class="sustainability-item">
+                    <div class="sustainability-icon">🎯</div>
+                    <h3>Zero Waste Goal</h3>
+                    <p>By 2026, we aim to achieve zero waste in our production facilities and packaging processes.</p>
+                </div>
+            </div>
+            <div style="text-align: center;">
+                <button class="btn btn-primary" onclick="joinEcoCrew()">Join Our Eco Crew</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter Section -->
+    <section class="newsletter">
+        <div class="container">
+            <h2>Stay Fresh with Breuit</h2>
+            <p>Get early access to new flavors, exclusive offers, and sustainability updates.</p>
+            <form class="newsletter-form" onsubmit="subscribeNewsletter(event)">
+                <input type="email" class="newsletter-input" placeholder="Enter your email" required>
+                <button type="submit" class="btn btn-secondary">Subscribe</button>
+            </form>
+            <div id="newsletter-success" class="success-message">Thank you for subscribing! Welcome to the Breuit family! 🎉</div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Breuit</h3>
+                    <p>Where Coffee Meets Fruit</p>
+                    <p>Reinventing cold coffee through natural fruit fusion for the modern active lifestyle.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Products</h3>
+                    <a href="#">Orange × Coffee</a>
+                    <a href="#">Strawberry × Coffee</a>
+                    <a href="#">Mixed Berries × Coffee</a>
+                    <a href="#">Coconut Water × Coffee</a>
+                </div>
+                <div class="footer-section">
+                    <h3>Company</h3>
+                    <a href="#story">Our Story</a>
+                    <a href="#sustainability">Sustainability</a>
+                    <a href="#">Press Kit</a>
+                    <a href="#">Careers</a>
+                </div>
+                <div class="footer-section">
+                    <h3>Support</h3>
+                    <a href="#">FAQ</a>
+                    <a href="#">Contact Us</a>
+                    <a href="#">Store Locator</a>
+                    <a href="#">Wholesale</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Breuit. All rights reserved. | Privacy Policy | Terms of Service</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Shopping Cart Modal -->
+    <div id="cart-modal" class="cart-modal">
+        <div class="cart-content">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 2rem;">
+                <h3>Your Cart</h3>
+                <button onclick="toggleCart()" style="background: none; border: none; font-size: 1.5rem; cursor: pointer;">&times;</button>
+            </div>
+            <div id="cart-items">
+                <p style="text-align: center; color: #666;">Your cart is empty</p>
+            </div>
+            <div id="cart-total" style="border-top: 2px solid #eee; padding-top: 1rem; margin-top: 2rem; font-weight: bold; text-align: right;">
+                Total: ₹0
+            </div>
+            <div style="margin-top: 2rem; display: flex; gap: 1rem;">
+                <button class="btn btn-secondary" onclick="clearCart()">Clear Cart</button>
+                <button class="btn btn-primary" onclick="checkout()" style="flex: 1;">Checkout</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Global variables
+        let cart = [];
+        let currentQuizQuestion = 0;
+        let quizAnswers = [];
+        
+        const products = {
+            1: { name: "Orange × Coffee", price: 149, color: "orange" },
+            2: { name: "Strawberry × Coffee", price: 149, color: "strawberry" },
+            3: { name: "Mixed Berries × Coffee", price: 159, color: "berry" },
+            4: { name: "Coconut Water × Coffee", price: 139, color: "coconut" }
+        };
+        
+        const quizQuestions = [
+            {
+                question: "What time of day do you need energy most?",
+                options: ["Early Morning", "Mid-Afternoon", "All Day", "Post-Workout"]
+            },
+            {
+                question: "What's your preferred flavor profile?",
+                options: ["Bright &amp; Citrusy", "Sweet &amp; Fruity", "Rich &amp; Complex", "Smooth &amp; Tropical"]
+            },
+            {
+                question: "How much caffeine do you typically need?",
+                options: ["Light Boost", "Moderate Energy", "High Intensity", "Varies by Day"]
+            }
+        ];
+        
+        const recommendations = {
+            "000": 1, "001": 1, "010": 2, "011": 2,
+            "100": 3, "101": 3, "110": 4, "111": 4,
+            "002": 3, "003": 4, "012": 3, "013": 4,
+            "102": 3, "103": 4, "112": 3, "113": 4,
+            "020": 2, "021": 2, "022": 3, "023": 4,
+            "120": 3, "121": 3, "122": 3, "123": 4,
+            "030": 4, "031": 4, "032": 4, "033": 4,
+            "130": 4, "131": 4, "132": 4, "133": 4
+        };
+        
+        // Initialize page
+        document.addEventListener('DOMContentLoaded', function() {
+            // Smooth scrolling for navigation links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href');
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        targetElement.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }
+                });
+            });
+            
+            // Navbar scroll effect
+            window.addEventListener('scroll', function() {
+                const navbar = document.querySelector('.navbar');
+                if (window.scrollY > 100) {
+                    navbar.style.background = 'rgba(255, 255, 255, 0.98)';
+                } else {
+                    navbar.style.background = 'rgba(255, 255, 255, 0.95)';
+                }
+            });
+        });
+        
+        // Shopping cart functions
+        function addToCart(id, name, price) {
+            const existingItem = cart.find(item => item.id === id);
+            if (existingItem) {
+                existingItem.quantity += 1;
+            } else {
+                cart.push({ id, name, price, quantity: 1 });
+            }
+            updateCartDisplay();
+            showCartNotification(name);
+        }
+        
+        function removeFromCart(id) {
+            cart = cart.filter(item => item.id !== id);
+            updateCartDisplay();
+        }
+        
+        function updateCartDisplay() {
+            const cartCount = document.querySelector('.cart-count');
+            const cartItems = document.getElementById('cart-items');
+            const cartTotal = document.getElementById('cart-total');
+            
+            const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+            const totalPrice = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+            
+            cartCount.textContent = totalItems;
+            
+            if (cart.length === 0) {
+                cartItems.innerHTML = '<p style="text-align: center; color: #666;">Your cart is empty</p>';
+            } else {
+                cartItems.innerHTML = cart.map(item => `
+                    <div class="cart-item">
+                        <div>
+                            <strong>${item.name}</strong><br>
+                            <small>₹${item.price} × ${item.quantity}</small>
+                        </div>
+                        <div>
+                            <button onclick="removeFromCart(${item.id})" style="background: #ff4757; color: white; border: none; padding: 0.5rem; border-radius: 4px; cursor: pointer;">Remove</button>
+                        </div>
+                    </div>
+                `).join('');
+            }
+            
+            cartTotal.innerHTML = `Total: ₹${totalPrice}`;
+        }
+        
+        function toggleCart() {
+            const modal = document.getElementById('cart-modal');
+            modal.style.display = modal.style.display === 'flex' ? 'none' : 'flex';
+        }
+        
+        function clearCart() {
+            cart = [];
+            updateCartDisplay();
+        }
+        
+        function checkout() {
+            if (cart.length === 0) {
+                alert('Your cart is empty!');
+                return;
+            }
+            alert('Thank you for your order! Redirecting to payment...');
+            clearCart();
+            toggleCart();
+        }
+        
+        function showCartNotification(productName) {
+            const notification = document.createElement('div');
+            notification.style.cssText = `
+                position: fixed;
+                top: 100px;
+                right: 20px;
+                background: var(--coconut);
+                color: white;
+                padding: 1rem 2rem;
+                border-radius: var(--radius);
+                z-index: 3000;
+                animation: slideInRight 0.3s ease;
+            `;
+            notification.innerHTML = `✅ ${productName} added to cart!`;
+            document.body.appendChild(notification);
+            
+            setTimeout(() => {
+                notification.remove();
+            }, 3000);
+        }
+        
+        // Quiz functions
+        function startQuiz() {
+            document.getElementById('quiz-start').classList.add('hidden');
+            document.getElementById('quiz-questions').classList.remove('hidden');
+            currentQuizQuestion = 0;
+            quizAnswers = [];
+            showQuestion();
+        }
+        
+        function showQuestion() {
+            const questionContainer = document.getElementById('quiz-questions');
+            const question = quizQuestions[currentQuizQuestion];
+            
+            questionContainer.innerHTML = `
+                <div class="quiz-question">
+                    <h3>${question.question}</h3>
+                    <div class="quiz-options">
+                        ${question.options.map((option, index) => 
+                            `<button class="quiz-option" onclick="selectAnswer(${index})">${option}</button>`
+                        ).join('')}
+                    </div>
+                </div>
+            `;
+            
+            updateQuizProgress();
+        }
+        
+        function selectAnswer(answerIndex) {
+            quizAnswers[currentQuizQuestion] = answerIndex;
+            
+            // Highlight selected option
+            const options = document.querySelectorAll('.quiz-option');
+            options.forEach((option, index) => {
+                option.classList.toggle('selected', index === answerIndex);
+            });
+            
+            setTimeout(() => {
+                currentQuizQuestion++;
+                if (currentQuizQuestion < quizQuestions.length) {
+                    showQuestion();
+                } else {
+                    showQuizResult();
+                }
+            }, 500);
+        }
+        
+        function updateQuizProgress() {
+            const dots = document.querySelectorAll('.progress-dot');
+            dots.forEach((dot, index) => {
+                dot.classList.toggle('active', index <= currentQuizQuestion);
+            });
+        }
+        
+        function showQuizResult() {
+            const answerKey = quizAnswers.join('');
+            const recommendedId = recommendations[answerKey] || 1;
+            const recommendedProduct = products[recommendedId];
+            
+            document.getElementById('quiz-questions').classList.add('hidden');
+            const resultContainer = document.getElementById('quiz-result');
+            
+            resultContainer.innerHTML = `
+                <h3>Your Perfect Match!</h3>
+                <div class="recommended-product">
+                    <h4>${recommendedProduct.name}</h4>
+                    <p>Based on your preferences, this is the perfect Breuit flavor for you!</p>
+                    <div style="margin: 1rem 0;">
+                        <strong>Price: ₹${recommendedProduct.price}</strong>
+                    </div>
+                </div>
+                <button class="btn btn-primary" onclick="addRecommendedToCart(${recommendedId})">Add to Cart</button>
+                <button class="btn btn-secondary" onclick="restartQuiz()">Take Quiz Again</button>
+            `;
+            
+            resultContainer.classList.remove('hidden');
+            window.recommendedProductId = recommendedId;
+        }
+        
+        function addRecommendedToCart(productId = window.recommendedProductId) {
+            const product = products[productId];
+            addToCart(productId, product.name, product.price);
+        }
+        
+        function restartQuiz() {
+            document.getElementById('quiz-result').classList.add('hidden');
+            document.getElementById('quiz-start').classList.remove('hidden');
+            currentQuizQuestion = 0;
+            quizAnswers = [];
+            updateQuizProgress();
+        }
+        
+        // Newsletter and other functions
+        function subscribeNewsletter(event) {
+            event.preventDefault();
+            const email = event.target.querySelector('input[type="email"]').value;
+            const successMessage = document.getElementById('newsletter-success');
+            
+            // Simulate subscription
+            successMessage.style.display = 'block';
+            event.target.reset();
+            
+            setTimeout(() => {
+                successMessage.style.display = 'none';
+            }, 5000);
+        }
+        
+        function joinEcoCrew() {
+            const email = prompt('Enter your email to join our Eco Crew:');
+            if (email) {
+                alert(`Thank you for joining our Eco Crew, ${email}! You'll receive updates about our sustainability initiatives.`);
+            }
+        }
+        
+        function showPreOrder() {
+            alert('Pre-orders start December 1st, 2025! Subscribe to our newsletter to get notified.');
+        }
+        
+        function showProductDetails(productId) {
+            const product = products[productId];
+            alert(`${product.name}\n\nComing soon with detailed ingredient breakdown, nutritional information, and 360° can view!`);
+        }
+        
+        // Add CSS for slide-in animation
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes slideInRight {
+                from {
+                    transform: translateX(100%);
+                    opacity: 0;
+                }
+                to {
+                    transform: translateX(0);
+                    opacity: 1;
+                }
+            }
+        `;
+        document.head.appendChild(style);
+    </script>
+</body>
+</html>
