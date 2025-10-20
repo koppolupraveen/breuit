@@ -9,6 +9,17 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Open+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
     
+    <!-- Favicon / PWA icons -->
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <!-- Transparent favicon (PNG with alpha) -->
+    <link rel="icon" href="favicon.png" type="image/png">
+    <link rel="icon" href="favicon-32.png" sizes="32x32" type="image/png">
+    <link rel="apple-touch-icon" href="apple-touch-icon.png">
+    <!-- Safari pinned tab (SVG) -->
+    <link rel="mask-icon" href="safari-pinned-tab.svg" color="#3E2723">
+    <meta name="theme-color" content="#3E2723">
+    
     <style>
         /* Design System Variables */
         :root {
@@ -78,6 +89,11 @@
             font-weight: 700;
             color: var(--primary-coffee);
             text-decoration: none;
+        }
+        
+        .logo-img {
+            max-width: 100px;
+            height: auto;
         }
         
         .nav-links {
@@ -714,22 +730,87 @@
             text-align: center;
             display: none;
         }
+
+        /* Footer — enhanced: white background, readable text */
+        .footer {
+            background: var(--white);
+            color: var(--primary-coffee);
+            padding: 3rem 2rem 2rem;
+            box-shadow: 0 -6px 20px rgba(62,39,35,0.04);
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+            align-items: start;
+        }
+
+        .footer-section h3 {
+            font-family: var(--font-heading);
+            font-weight: 700;
+            margin-bottom: 0.75rem;
+            color: var(--primary-coffee);
+        }
+
+        .footer-section p,
+        .footer-section a {
+            color: var(--medium-gray);
+            text-decoration: none;
+            display: block;
+            margin-bottom: 0.5rem;
+            transition: color 0.2s ease;
+        }
+
+        .footer-section a:hover {
+            color: var(--orange);
+        }
+
+        .footer .social {
+            display: flex;
+            gap: 0.5rem;
+            margin-top: 0.5rem;
+        }
+
+        .footer .social a {
+            width: 40px;
+            height: 40px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 8px;
+            background: rgba(62,39,35,0.04);
+            color: var(--primary-coffee);
+            text-decoration: none;
+            font-size: 18px;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(62,39,35,0.06);
+            padding-top: 1.5rem;
+            text-align: center;
+            color: var(--medium-gray);
+            font-size: 0.95rem;
+        }
     </style>
 </head>
 <body>
     <!-- Navigation -->
     <nav class="navbar">
         <div class="nav-container">
-            <a href="#" class="logo">Breuit</a>
-            <ul class="nav-links">
-                <li><a href="#home">Home</a></li>
-                <li><a href="#products">Products</a></li>
-                <li><a href="#story">Our Story</a></li>
-                <li><a href="#sustainability">Sustainability</a></li>
-                <li><a href="#quiz">Flavor Finder</a></li>
-            </ul>
-        </div>
-    </nav>
+            <a href="#" class="logo">
+                <img src="logo.png" alt="Breuit logo" class="logo-img">
+            </a>
+             <ul class="nav-links">
+                 <li><a href="#home">Home</a></li>
+                 <li><a href="#products">Products</a></li>
+                 <li><a href="#story">Our Story</a></li>
+                 <li><a href="#sustainability">Sustainability</a></li>
+                 <li><a href="#quiz">Flavor Finder</a></li>
+             </ul>
+         </div>
+     </nav>
 
     <!-- Hero Section -->
     <section id="home" class="hero">
@@ -947,6 +1028,11 @@
                     <h3>Breuit</h3>
                     <p>Where Coffee Meets Fruit</p>
                     <p>Reinventing cold coffee through natural fruit fusion for the modern active lifestyle.</p>
+                    <div class="social" aria-hidden="true">
+                        <a href="#" title="Instagram">IG</a>
+                        <a href="#" title="Facebook">FB</a>
+                        <a href="#" title="Twitter">TW</a>
+                    </div>
                 </div>
                 <div class="footer-section">
                     <h3>Products</h3>
@@ -959,19 +1045,15 @@
                     <h3>Company</h3>
                     <a href="#story">Our Story</a>
                     <a href="#sustainability">Sustainability</a>
-                    <a href="#">Press Kit</a>
-                    <a href="#">Careers</a>
                 </div>
                 <div class="footer-section">
                     <h3>Support</h3>
                     <a href="#">FAQ</a>
                     <a href="#">Contact Us</a>
-                    <a href="#">Store Locator</a>
-                    <a href="#">Wholesale</a>
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>&copy; 2025 Breuit. All rights reserved. | Privacy Policy | Terms of Service</p>
+                <p>&copy; 2025 Breuit. All rights reserved. &nbsp; | &nbsp; <a href="#" style="color:inherit; text-decoration:underline;">Privacy Policy</a> &nbsp; | &nbsp; <a href="#" style="color:inherit; text-decoration:underline;">Terms of Service</a></p>
             </div>
         </div>
     </footer>
