@@ -98,36 +98,6 @@
             color: var(--primary-coffee);
         }
         
-        .cart-icon {
-            position: relative;
-            background: var(--primary-coffee);
-            color: white;
-            padding: 0.75rem;
-            border-radius: 50%;
-            cursor: pointer;
-            transition: transform 0.3s ease;
-        }
-        
-        .cart-icon:hover {
-            transform: scale(1.1);
-        }
-        
-        .cart-count {
-            position: absolute;
-            top: -5px;
-            right: -5px;
-            background: var(--orange);
-            color: white;
-            border-radius: 50%;
-            width: 20px;
-            height: 20px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 0.8rem;
-            font-weight: bold;
-        }
-        
         /* Hero Section */
         .hero {
             background: var(--gradient-hero);
@@ -601,45 +571,72 @@
             font-size: 1rem;
         }
         
-        /* Footer */
-        .footer {
-            background: var(--primary-coffee);
-            color: white;
-            padding: 3rem 2rem 2rem;
+        /* Modal: Pre-order notice */
+        .modal-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(0,0,0,0.5);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            z-index: 2000;
         }
-        
-        .footer-content {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-            margin-bottom: 2rem;
+        .modal-overlay.active { display: flex; }
+
+        .modal {
+            background: #fff;
+            color: #222;
+            padding: 1.25rem 1rem;
+            border-radius: 12px;
+            max-width: 440px;
+            width: 90%;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.3);
+            position: relative;
+            text-align: left;
+            animation: modalIn .22s ease;
+            font-family: var(--font-body);
         }
-        
-        .footer-section h3 {
+
+        .modal-close {
+            position: absolute;
+            top: 8px;
+            right: 8px;
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            border: none;
+            background: transparent;
+            color: var(--dark-gray);
+            font-size: 18px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal h4 {
+            margin: 0 0 0.5rem 0;
             font-family: var(--font-heading);
-            font-weight: 600;
+            color: var(--primary-coffee);
+        }
+
+        .modal .modal-message {
             margin-bottom: 1rem;
+            color: var(--medium-gray);
+            line-height: 1.5;
         }
-        
-        .footer-section a {
-            color: rgba(255, 255, 255, 0.8);
-            text-decoration: none;
-            display: block;
-            margin-bottom: 0.5rem;
-            transition: color 0.3s ease;
+
+        .modal .modal-actions {
+            display: flex;
+            gap: .5rem;
+            justify-content: flex-end;
         }
-        
-        .footer-section a:hover {
-            color: var(--orange);
+
+        @keyframes modalIn {
+            from { transform: translateY(12px); opacity: 0; }
+            to   { transform: translateY(0); opacity: 1; }
         }
-        
-        .footer-bottom {
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-            padding-top: 2rem;
-            text-align: center;
-            color: rgba(255, 255, 255, 0.6);
-        }
-        
+
         /* Animations */
         @keyframes fadeInUp {
             from {
@@ -704,38 +701,6 @@
             }
         }
         
-        /* Shopping Cart Modal */
-        .cart-modal {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.5);
-            display: none;
-            justify-content: center;
-            align-items: center;
-            z-index: 2000;
-        }
-        
-        .cart-content {
-            background: white;
-            border-radius: var(--radius-large);
-            padding: 2rem;
-            max-width: 500px;
-            width: 90%;
-            max-height: 80vh;
-            overflow-y: auto;
-        }
-        
-        .cart-item {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 1rem 0;
-            border-bottom: 1px solid #eee;
-        }
-        
         .hidden {
             display: none;
         }
@@ -763,10 +728,6 @@
                 <li><a href="#sustainability">Sustainability</a></li>
                 <li><a href="#quiz">Flavor Finder</a></li>
             </ul>
-            <div class="cart-icon" onclick="toggleCart()">
-                🛒
-                <span class="cart-count">0</span>
-            </div>
         </div>
     </nav>
 
@@ -807,7 +768,7 @@
                         <div class="stat"><span class="stat-label">Price:</span> ₹149</div>
                     </div>
                     <div class="product-actions">
-                        <button class="btn btn-primary btn-small" onclick="addToCart(1, 'Orange × Coffee', 149)">Add to Cart</button>
+                        <button class="btn btn-primary btn-small" onclick="showPreOrder()">Pre-Order</button>
                         <button class="btn btn-secondary btn-small" onclick="showProductDetails(1)">Learn More</button>
                     </div>
                 </div>
@@ -824,7 +785,7 @@
                         <div class="stat"><span class="stat-label">Price:</span> ₹149</div>
                     </div>
                     <div class="product-actions">
-                        <button class="btn btn-primary btn-small" onclick="addToCart(2, 'Strawberry × Coffee', 149)">Add to Cart</button>
+                        <button class="btn btn-primary btn-small" onclick="showPreOrder()">Pre-Order</button>
                         <button class="btn btn-secondary btn-small" onclick="showProductDetails(2)">Learn More</button>
                     </div>
                 </div>
@@ -841,7 +802,7 @@
                         <div class="stat"><span class="stat-label">Price:</span> ₹159</div>
                     </div>
                     <div class="product-actions">
-                        <button class="btn btn-primary btn-small" onclick="addToCart(3, 'Mixed Berries × Coffee', 159)">Add to Cart</button>
+                        <button class="btn btn-primary btn-small" onclick="showPreOrder()">Pre-Order</button>
                         <button class="btn btn-secondary btn-small" onclick="showProductDetails(3)">Learn More</button>
                     </div>
                 </div>
@@ -858,7 +819,7 @@
                         <div class="stat"><span class="stat-label">Price:</span> ₹139</div>
                     </div>
                     <div class="product-actions">
-                        <button class="btn btn-primary btn-small" onclick="addToCart(4, 'Coconut Water × Coffee', 139)">Add to Cart</button>
+                        <button class="btn btn-primary btn-small" onclick="showPreOrder()">Pre-Order</button>
                         <button class="btn btn-secondary btn-small" onclick="showProductDetails(4)">Learn More</button>
                     </div>
                 </div>
@@ -911,7 +872,7 @@
                         <div class="recommended-product">
                             <!-- Result will be populated by JavaScript -->
                         </div>
-                        <button class="btn btn-primary" onclick="addRecommendedToCart()">Add to Cart</button>
+                        <button class="btn btn-primary" onclick="showPreOrder()">Pre-Order</button>
                         <button class="btn btn-secondary" onclick="restartQuiz()">Take Quiz Again</button>
                     </div>
                 </div>
@@ -964,6 +925,20 @@
         </div>
     </section>
 
+    <!-- Pre-order Modal (hidden by default) -->
+    <div id="preorder-modal-overlay" class="modal-overlay" aria-hidden="true" role="dialog" aria-modal="true">
+        <div class="modal" role="document" aria-labelledby="preorder-title">
+            <button class="modal-close" id="preorder-modal-close" aria-label="Close">✕</button>
+            <h4 id="preorder-title">Be the First to Taste the Fusion.</h4>
+            <div class="modal-message">
+                Pre-orders start December 1st, 2025! Subscribe to our newsletter to get notified.
+            </div>
+            <div class="modal-actions">
+                <button class="btn btn-secondary" id="preorder-modal-dismiss">Close</button>
+            </div>
+        </div>
+    </div>
+
     <!-- Footer -->
     <footer class="footer">
         <div class="container">
@@ -1001,29 +976,8 @@
         </div>
     </footer>
 
-    <!-- Shopping Cart Modal -->
-    <div id="cart-modal" class="cart-modal">
-        <div class="cart-content">
-            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 2rem;">
-                <h3>Your Cart</h3>
-                <button onclick="toggleCart()" style="background: none; border: none; font-size: 1.5rem; cursor: pointer;">&times;</button>
-            </div>
-            <div id="cart-items">
-                <p style="text-align: center; color: #666;">Your cart is empty</p>
-            </div>
-            <div id="cart-total" style="border-top: 2px solid #eee; padding-top: 1rem; margin-top: 2rem; font-weight: bold; text-align: right;">
-                Total: ₹0
-            </div>
-            <div style="margin-top: 2rem; display: flex; gap: 1rem;">
-                <button class="btn btn-secondary" onclick="clearCart()">Clear Cart</button>
-                <button class="btn btn-primary" onclick="checkout()" style="flex: 1;">Checkout</button>
-            </div>
-        </div>
-    </div>
-
     <script>
         // Global variables
-        let cart = [];
         let currentQuizQuestion = 0;
         let quizAnswers = [];
         
@@ -1087,93 +1041,6 @@
                 }
             });
         });
-        
-        // Shopping cart functions
-        function addToCart(id, name, price) {
-            const existingItem = cart.find(item => item.id === id);
-            if (existingItem) {
-                existingItem.quantity += 1;
-            } else {
-                cart.push({ id, name, price, quantity: 1 });
-            }
-            updateCartDisplay();
-            showCartNotification(name);
-        }
-        
-        function removeFromCart(id) {
-            cart = cart.filter(item => item.id !== id);
-            updateCartDisplay();
-        }
-        
-        function updateCartDisplay() {
-            const cartCount = document.querySelector('.cart-count');
-            const cartItems = document.getElementById('cart-items');
-            const cartTotal = document.getElementById('cart-total');
-            
-            const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
-            const totalPrice = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
-            
-            cartCount.textContent = totalItems;
-            
-            if (cart.length === 0) {
-                cartItems.innerHTML = '<p style="text-align: center; color: #666;">Your cart is empty</p>';
-            } else {
-                cartItems.innerHTML = cart.map(item => `
-                    <div class="cart-item">
-                        <div>
-                            <strong>${item.name}</strong><br>
-                            <small>₹${item.price} × ${item.quantity}</small>
-                        </div>
-                        <div>
-                            <button onclick="removeFromCart(${item.id})" style="background: #ff4757; color: white; border: none; padding: 0.5rem; border-radius: 4px; cursor: pointer;">Remove</button>
-                        </div>
-                    </div>
-                `).join('');
-            }
-            
-            cartTotal.innerHTML = `Total: ₹${totalPrice}`;
-        }
-        
-        function toggleCart() {
-            const modal = document.getElementById('cart-modal');
-            modal.style.display = modal.style.display === 'flex' ? 'none' : 'flex';
-        }
-        
-        function clearCart() {
-            cart = [];
-            updateCartDisplay();
-        }
-        
-        function checkout() {
-            if (cart.length === 0) {
-                alert('Your cart is empty!');
-                return;
-            }
-            alert('Thank you for your order! Redirecting to payment...');
-            clearCart();
-            toggleCart();
-        }
-        
-        function showCartNotification(productName) {
-            const notification = document.createElement('div');
-            notification.style.cssText = `
-                position: fixed;
-                top: 100px;
-                right: 20px;
-                background: var(--coconut);
-                color: white;
-                padding: 1rem 2rem;
-                border-radius: var(--radius);
-                z-index: 3000;
-                animation: slideInRight 0.3s ease;
-            `;
-            notification.innerHTML = `✅ ${productName} added to cart!`;
-            document.body.appendChild(notification);
-            
-            setTimeout(() => {
-                notification.remove();
-            }, 3000);
-        }
         
         // Quiz functions
         function startQuiz() {
@@ -1245,17 +1112,11 @@
                         <strong>Price: ₹${recommendedProduct.price}</strong>
                     </div>
                 </div>
-                <button class="btn btn-primary" onclick="addRecommendedToCart(${recommendedId})">Add to Cart</button>
+                <button class="btn btn-primary" onclick="showPreOrder()">Pre-Order</button>
                 <button class="btn btn-secondary" onclick="restartQuiz()">Take Quiz Again</button>
             `;
             
             resultContainer.classList.remove('hidden');
-            window.recommendedProductId = recommendedId;
-        }
-        
-        function addRecommendedToCart(productId = window.recommendedProductId) {
-            const product = products[productId];
-            addToCart(productId, product.name, product.price);
         }
         
         function restartQuiz() {
@@ -1267,18 +1128,31 @@
         }
         
         // Newsletter and other functions
-        function subscribeNewsletter(event) {
+        async function subscribeNewsletter(event) {
             event.preventDefault();
-            const email = event.target.querySelector('input[type="email"]').value;
+            const form = event.target;
+            const email = form.querySelector('input[type="email"]').value.trim();
             const successMessage = document.getElementById('newsletter-success');
-            
-            // Simulate subscription
-            successMessage.style.display = 'block';
-            event.target.reset();
-            
-            setTimeout(() => {
-                successMessage.style.display = 'none';
-            }, 5000);
+            const btn = form.querySelector('button[type="submit"]');
+            btn.disabled = true;
+
+            try {
+                const res = await fetch('/subscribe', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ email })
+                });
+                const json = await res.json();
+                successMessage.textContent = json.message || (json.success ? 'Subscribed!' : 'Subscription failed');
+                successMessage.style.display = 'block';
+                if (json.success) form.reset();
+            } catch (err) {
+                successMessage.textContent = 'Network error — please try again';
+                successMessage.style.display = 'block';
+            } finally {
+                btn.disabled = false;
+                setTimeout(() => { successMessage.style.display = 'none'; }, 5000);
+            }
         }
         
         function joinEcoCrew() {
@@ -1289,13 +1163,49 @@
         }
         
         function showPreOrder() {
-            alert('Pre-orders start December 1st, 2025! Subscribe to our newsletter to get notified.');
+            const overlay = document.getElementById('preorder-modal-overlay');
+            if (!overlay) {
+                // fallback
+                alert('Pre-orders start December 1st, 2025! Subscribe to our newsletter to get notified.');
+                return;
+            }
+            overlay.classList.add('active');
+            overlay.setAttribute('aria-hidden', 'false');
+            const closeBtn = document.getElementById('preorder-modal-close');
+            if (closeBtn) closeBtn.focus();
         }
         
-        function showProductDetails(productId) {
-            const product = products[productId];
-            alert(`${product.name}\n\nComing soon with detailed ingredient breakdown, nutritional information, and 360° can view!`);
+        function closePreOrderModal() {
+            const overlay = document.getElementById('preorder-modal-overlay');
+            if (!overlay) return;
+            overlay.classList.remove('active');
+            overlay.setAttribute('aria-hidden', 'true');
         }
+        
+        // Modal event wiring
+        document.addEventListener('DOMContentLoaded', function() {
+            const overlay = document.getElementById('preorder-modal-overlay');
+            const closeBtn = document.getElementById('preorder-modal-close');
+            const dismissBtn = document.getElementById('preorder-modal-dismiss');
+
+            if (closeBtn) closeBtn.addEventListener('click', closePreOrderModal);
+            if (dismissBtn) dismissBtn.addEventListener('click', closePreOrderModal);
+
+            if (overlay) {
+                // close when clicking outside the modal content
+                overlay.addEventListener('click', (e) => {
+                    if (e.target === overlay) closePreOrderModal();
+                });
+            }
+
+            // close on Escape
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape') {
+                    const ov = document.getElementById('preorder-modal-overlay');
+                    if (ov && ov.classList.contains('active')) closePreOrderModal();
+                }
+            });
+        });
         
         // Add CSS for slide-in animation
         const style = document.createElement('style');
